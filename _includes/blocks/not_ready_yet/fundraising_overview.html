@@ -1,0 +1,109 @@
+<section class="bg-white dark:bg-gray-900">
+    <div class="mx-auto max-w-screen-xl px-4 py-8 sm:py-16 lg:px-6 lg:py-24">
+        <!-- Header -->
+        <div class="mx-auto max-w-2xl text-center mb-12">
+            <h2 class="text-3xl font-extrabold leading-tight tracking-tight text-gray-900 dark:text-white sm:text-4xl mb-4">
+                {{ block.headline | default: 'Fundraising events' }}
+            </h2>
+            <p class="text-base font-normal text-gray-500 dark:text-gray-400 sm:text-xl">
+                {{ block.text | default: 'Flowbite helps you connect with friends, family and communities of people who share your interests.' }}
+            </p>
+        </div>
+
+        <!-- Cards Grid -->
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:gap-8 lg:max-w-5xl mx-auto">
+            <!-- Card 1 -->
+            <div class="flex flex-col rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-800 p-6 h-full">
+                <img src="{{ block.card1_image | relative_url | default: 'https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/fundraising-1.png' }}"
+                     alt="Fundraiser 1"
+                     class="w-full rounded-lg object-cover shadow-lg mb-4">
+
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                        <span class="text-2xl font-bold text-gray-900 dark:text-white">$376,856</span>
+                        <span class="text-sm text-gray-500 dark:text-gray-400">of 400k goal</span>
+                    </div>
+                    <span class="text-xs text-gray-500 dark:text-gray-400">2,756 donors</span>
+                </div>
+
+                <!-- Progress bar -->
+                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mb-4 overflow-hidden">
+                    <div class="bg-cyan-600 h-2.5 rounded-full" style="width: 85%;"></div>
+                </div>
+
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 leading-tight">
+                    {{ block.card1_title | default: 'Thank you for supporting in planting trees work.' }}
+                </h3>
+                <p class="text-base text-gray-500 dark:text-gray-400 mb-6 flex-grow">
+                    {{ block.card1_text | default: 'Our fundraisers are a creative bunch when it comes to taking on challenges, from beard shaves and bake sales to stand-up comedy and streaming marathons.' }}
+                </p>
+
+                <div class="flex flex-col gap-3 sm:flex-row">
+                    <a href="{{ block.card1_donate_url | default: '#' }}"
+                       class="flex-1 inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 rounded-lg dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-colors">
+                        Donate now
+                    </a>
+                    <a href="{{ block.card1_share_url | default: '#' }}"
+                       class="flex-1 inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-2 focus:ring-blue-300 rounded-lg dark:bg-transparent dark:border-gray-600 dark:text-white dark:hover:bg-gray-700 transition-colors">
+                        <svg class="-ml-1 mr-2 h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z"></path>
+                        </svg>
+                        Share
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="flex flex-col rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-800 p-6 lg:p-8 h-full">
+                <img src="{{ block.card2_image | relative_url | default: 'https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/fundraising-2.png' }}"
+                     alt="Fundraiser 2"
+                     class="w-full rounded-lg object-cover shadow-lg mb-4">
+
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                        <span class="text-2xl font-bold text-gray-900 dark:text-white">$75,856</span>
+                        <span class="text-sm text-gray-500 dark:text-gray-400">of 150k goal</span>
+                    </div>
+                    <span class="text-xs text-gray-500 dark:text-gray-400">568 donors</span>
+                </div>
+
+                <!-- Progress bar -->
+                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mb-4 overflow-hidden">
+                    <div class="bg-cyan-600 h-2.5 rounded-full" style="width: 50%;"></div>
+                </div>
+
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 leading-tight">
+                    {{ block.card2_title | default: 'Thank you for supporting our lifesaving work.' }}
+                </h3>
+                <p class="text-base text-gray-500 dark:text-gray-400 mb-6 flex-grow">
+                    {{ block.card2_text | default: 'Our fundraisers are a creative bunch when it comes to taking on challenges, from beard shaves and bake sales to stand-up comedy and streaming marathons.' }}
+                </p>
+
+                <div class="flex flex-col gap-3 sm:flex-row">
+                    <a href="{{ block.card2_donate_url | default: '#' }}"
+                       class="flex-1 inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 rounded-lg dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-colors">
+                        Donate now
+                    </a>
+                    <a href="{{ block.card2_share_url | default: '#' }}"
+                       class="flex-1 inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-2 focus:ring-blue-300 rounded-lg dark:bg-transparent dark:border-gray-600 dark:text-white dark:hover:bg-gray-700 transition-colors">
+                        <svg class="-ml-1 mr-2 h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z"></path>
+                        </svg>
+                        Share
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- View All Link -->
+        <div class="mt-12 text-center">
+            <a href="{{ block.view_all_url | default: '#' }}"
+               class="inline-flex items-center text-xl font-medium text-blue-600 hover:underline dark:text-blue-500 transition-colors">
+                {{ block.view_all_text | default: 'View all fundraising events' }}
+                <svg class="ml-2 h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,37 @@
+dictionary:
+  - number: 1
+    nominativ: Січень
+    genitiv: січня
+  - number: 2
+    nominativ: Лютий
+    genitiv: лютого
+  - number: 3
+    nominativ: Березень
+    genitiv: березня
+  - number: 4
+    nominativ: Квітень
+    genitiv: квітня
+  - number: 5
+    nominativ: Травень
+    genitiv: травня
+  - number: 6
+    nominativ: Червень
+    genitiv: червня
+  - number: 7
+    nominativ: Липень
+    genitiv: липня
+  - number: 8
+    nominativ: Серпень
+    genitiv: серпня
+  - number: 9
+    nominativ: Вересень
+    genitiv: вересня
+  - number: 10
+    nominativ: Жовтень
+    genitiv: жовтня
+  - number: 11
+    nominativ: Листопад
+    genitiv: листопада
+  - number: 12
+    nominativ: Грудень
+    genitiv: грудня

@@ -1,0 +1,77 @@
+<footer class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+    <div class="mx-auto max-w-screen-xl p-4 sm:p-8 lg:p-10">
+
+        <!-- Footer Links Grid -->
+        {% assign num_cols = site.data[page.lang].footer.columns.size %}
+        <div class="grid gap-8 space-y-12 sm:grid-cols-2 sm:space-y-0 lg:grid-cols-{{ num_cols }} xl:gap-12">
+
+            {% for column in site.data[page.lang].footer.columns %}
+            <div>
+                <h3 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white tracking-wide">{{ column.title }}</h3>
+                <ul class="text-gray-500 dark:text-gray-400 space-y-3">
+                    {% for item in column.column_items %}
+                    <li>
+                        {% if item.url %}<a href="{{ item.url }}" class="hover:underline transition-colors">{% endif %}
+                        {{ item.title }}
+                        {% if item.url %}</a>{% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Divider -->
+        <hr class="my-8 border-gray-200 dark:border-gray-700">
+
+        <!-- Bottom section -->
+        <div class="flex flex-col items-center justify-between gap-4 text-center lg:flex-row lg:gap-0">
+            <!-- Logo -->
+            <a href="{{ site.url }}" class="flex items-center mb-4 lg:mb-0">
+                <img src="{{ '/assets/images/logo4.png' | relative_url }}" class="h-10 w-auto mr-3" alt="Logo">
+            </a>
+
+            <!-- Copyright -->
+            <span class="text-sm text-gray-500 dark:text-gray-400">
+                © {{ 'now' | date: '%Y' }} St. Barbara Church, Vienna
+            </span>
+
+            <!-- Language Dropdown -->
+            <div class="relative">
+                <!-- Toggle Button -->
+                <button
+                    id="language-dropdown-button"
+                    data-dropdown-toggle="language-dropdown"
+                    data-dropdown-placement="top"
+                    class="flex items-center p-2 text-sm font-medium text-gray-500 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 focus:outline-none dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 transition-colors"
+                    type="button">
+
+                    {% if page.lang == "ua" %}
+                        {% include flags/flag_ukrainian.html %}
+                    {% else %}
+                        {% include flags/flag_austrian.html %}
+                    {% endif %}
+
+                    <span>{{ site.data.languages[page.lang].label }}</span>
+                    <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+
+                <!-- Dropdown Menu -->
+                <div id="language-dropdown" class="z-50 hidden w-44 bg-white divide-y divide-gray-100 rounded-lg shadow dark:divide-gray-600 dark:bg-gray-700 absolute right-0 mt-2">
+                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" role="menu">
+                        {% assign common_pages = site.pages | where: "lang-ref", page.lang-ref | sort: 'lang' %}
+                        {% for page in common_pages %}
+                        <li role="menuitem">
+                            <a href="{{ page.url | relative_url }}" class="flex w-full cursor-pointer items-center justify-start px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:bg-gray-600" tabindex="-1">
+                                {{ site.data.languages[page.lang].label | default: page.lang }}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

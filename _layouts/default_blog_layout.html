@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {% include head.html %}
+    {% include theme.html %}
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet">
+</head>
+
+<body>
+{% include blocks/navigation.html %}
+
+
+    <main class="bg-white pb-16 antialiased dark:bg-gray-900 lg:pb-24">
+        <!-- Hero header -->
+        <header
+            class="relative h-[460px] w-full bg-[url({{ page.image.src }})] bg-cover bg-center bg-no-repeat bg-blend-darken xl:h-[537px]">
+            <div class="absolute inset-0 bg-black/60"></div>
+
+            <div
+                class="absolute left-1/2 top-20 mx-auto w-full max-w-screen-xl -translate-x-1/2 px-4 xl:top-1/2 xl:-translate-y-1/2 xl:px-0">
+                <h1
+                    class="mb-4 max-w-4xl text-3xl font-extrabold leading-tight text-white sm:text-4xl lg:text-5xl">
+                    {{ page.title }}
+                </h1>
+
+                <p class="max-w-2xl text-lg font-normal text-gray-200">
+                    {{ page.teaser | default: 'Before going digital, you might scribble down some ideas in a sketchbook.' }}
+                </p>
+            </div>
+        </header>
+
+        <!-- Content + sidebar -->
+        <div
+            class="relative z-20 -mt-24 mx-4 flex max-w-screen-xl flex-col gap-8 rounded-xl bg-white p-6 shadow-lg dark:bg-gray-800 lg:-mt-28 lg:flex-row lg:items-start lg:gap-12 xl:mx-auto xl:p-9">
+
+            <!-- page -->
+            <page
+                class="format format-sm format-blue w-full max-w-none dark:format-invert sm:format-base lg:format-lg xl:w-[828px]">
+                <!-- Meta + share -->
+                <div class="mb-6 flex flex-col justify-between gap-4 lg:mb-8 lg:flex-row lg:items-center">
+                    <!-- Date -->
+                    <div class="flex items-center flex-wrap gap-3 text-sm text-gray-400">
+                        <time class="font-normal text-gray-500 dark:text-gray-400">
+                            {% assign created_day_date = page.date | date: '%d' %}
+                            {% assign created_month_date = page.date | date: '%m' | slice: 0,2 | plus: -1 %}
+                            {% assign created_year_date = page.date | date: '%Y' %}
+
+                            {% assign month_number = created_month_date | slice: 0,2 | plus: 0 %}
+                            {% assign lang_data = site.data[page.lang] %}
+                            {% assign created_month_label = lang_data.months.dictionary[month_number].genitiv %}
+
+                            Published on: {{ created_day_date }} {{ created_month_label }} {{ created_year_date }}
+                        </time>
+                    </div>
+                </div>
+
+                <div class="[&_img]:mx-auto [&_img]:rounded-lg [&_img]:max-w-full [&_img]:block">
+                    {{ content | markdownify }}
+                </div>
+            </page>
+
+            <!-- Sidebar -->
+            <aside class="hidden xl:block" aria-labelledby="sidebar-label">
+                <div class="sticky top-6 xl:w-[336px]">
+                    <h3 id="sidebar-label" class="sr-only">Sidebar</h3>
+
+                    <div class="mb-12">
+                        <h4 class="mb-4 text-sm font-bold uppercase tracking-wide text-gray-900 dark:text-white">
+                            Latest news
+                        </h4>
+
+                        {% assign blog_pages = site.pages
+                        | where: "layout", "default_blog_layout"
+                        | where: "lang", page.lang
+                        | where_exp: "other_post", "other_post.url != page.url"
+                        | sort: 'date' | reverse %}
+
+                        {% for post in blog_pages limit:5 %}
+                            <div class="mb-6 flex items-center">
+                                <a href="{{ post.url | default: '#' }}" class="shrink-0">
+                                    <img src="{{ post.image.src }}"
+                                         class="mr-4 h-24 w-24 max-w-full rounded-lg object-cover"
+                                         alt="{{ post.title }}">
+                                </a>
+                                <div>
+                                    <h5 class="mb-1 text-lg font-bold leading-tight text-gray-900 dark:text-white">
+                                        {{ post.title | default: 'Our first post' }}
+                                    </h5>
+                                    <p class="mb-2 text-gray-500 dark:text-gray-400">
+                                        {{ post.teaser | default: 'Over the past year, our website has undergone changes.' }}
+                                    </p>
+                                    <a href="{{ post.url | default: '#' }}"
+                                       class="inline-flex items-center text-sm font-medium text-blue-600 underline underline-offset-4 hover:no-underline dark:text-blue-400">
+                                        {% assign words = post.content | strip_html | number_of_words %}
+                                        {% assign read_time = words | divided_by: 180.0 | round %}
+
+                                        {% if read_time < 1 %}
+                                        {% assign read_time_label = 'Read in 1 minute' %}
+                                        {% else %}
+                                        {% assign read_time_label = 'Read in ' | append: read_time | append: ' minutes' %}
+                                        {% endif %}
+
+                                        {{ read_time_label | default: 'Read in 9 minutes' }}
+                                    </a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </aside>
+        </div>
+        {% if page.image_gallery.gallery_enabled %}
+        <section class="bg-white dark:bg-gray-900">
+            <div class="mx-auto max-w-screen-xl px-4 py-12 sm:text-center lg:px-12 lg:py-20">
+                <div class="mx-auto max-w-4xl">
+                    {% if page.image_gallery.gallery_title %}
+                        <h2 class="mb-8 text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-5xl lg:text-6xl">
+                            {{ page.image_gallery.gallery_title }}
+                        </h2>
+                    {% endif %}
+                </div>
+                <!-- Image Gallery Grid -->
+                <div class="grid gap-4 sm:grid-cols-4 sm:gap-6 mt-12 sm:mt-16 lg:mt-20">
+                    {% for item in page.image_gallery.images %}
+                    <img src="{{ item.image.src }}"
+                         alt="{{ item.image.alt }}"
+                         class="w-full col-span-4 lg:col-span-2 rounded-xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-500 object-cover h-64 sm:h-80 lg:h-96">
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        {% endif %}
+    </main>
+
+
+
+{% include blocks/footer.html %}
+
+<script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+</body>
+</html>

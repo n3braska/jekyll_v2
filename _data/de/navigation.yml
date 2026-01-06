@@ -1,0 +1,11 @@
+navbar:
+  - link: /de/timetable.html
+    name: Gottesdienstplan
+  - link: /de/hazeta.html
+    name: Zeitung
+  - link: /de/pozhertvy.html
+    name: Hilfe für die Ukraine
+  - link: /de/tayinstva.html
+    name: Sakrament
+  - link: /de/history.html
+    name: Geschichte

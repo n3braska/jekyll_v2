@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {% include head.html %}
+    {% include theme.html %}
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet">
+</head>
+
+<body>
+{% include blocks/navigation.html %}
+
+{% if page.blocks %}
+    {% for block in page.blocks %}
+        {% case block.type %}
+
+            {% when "carousel" %}
+                {% include blocks/carousel.html %}
+
+            {% when "service_schedule_jesuiten" %}
+                {% include blocks/service_schedule_jesuiten.html %}
+
+            {% when "service_schedule_josaphat" %}
+                {% include blocks/service_schedule_josaphat.html %}
+
+            {% when "blog_section" %}
+                {% include blocks/blog_section.html block=block %}
+
+            {% when "cta_button_image" %}
+                {% include blocks/cta_button_image.html block=block %}
+
+            {% when "content_heading_description" %}
+                {% include blocks/content_heading_description.html block=block %}
+
+            {% when "content_heading_description_image" %}
+                {% include blocks/content_heading_description_image.html block=block %}
+
+            {% when "content_video_embed" %}
+                {% include blocks/content_video_embed.html block=block %}
+
+            {% when "cta_banner" %}
+                {% include blocks/cta_banner.html block=block %}
+
+            {% when "cta_button_middle" %}
+                {% include blocks/cta_button_middle.html block=block %}
+
+            {% when "event_schedule_with_speakers" %}
+                {% include blocks/event_schedule_with_speakers.html block=block %}
+
+            {% when "footer_pre_cta" %}
+                {% include blocks/footer_pre_cta.html block=block %}
+
+            {% when "fundraising_overview" %}
+                {% include blocks/fundraising_overview.html block=block %}
+
+            {% when "header_dropdown" %}
+                {% include blocks/header_dropdown.html block=block %}
+
+            {% when "hero" %}
+                {% include blocks/hero.html block=block %}
+
+            {% when "image_gallery" %}
+                {% include blocks/image_gallery.html block=block %}
+
+            {% when "our_team_grid_cards" %}
+                {% include blocks/our_team_grid_cards.html block=block %}
+
+            {% when "email_signup" %}
+                {% include blocks/email_signup.html block=block %}
+
+        {% endcase %}
+    {% endfor %}
+{% endif %}
+
+{% include blocks/footer.html %}
+
+<script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+</body>
+</html>

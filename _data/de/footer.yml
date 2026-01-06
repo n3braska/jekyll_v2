@@ -1,0 +1,12 @@
+columns:
+  - title: Allgemeine Anschrift
+    column_items:
+      - title: Postgasse 8-12, 1010 Wien
+  - title: Feedback
+    column_items:
+      - title: Kontakte
+        url: /de/contacts.html
+  - title: Organisatorisch
+    column_items:
+      - title: Heiliger Josaphat
+        url: /de/iosafat.html

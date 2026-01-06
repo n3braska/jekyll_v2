@@ -1,0 +1,77 @@
+{% assign month_date_now = 'now' | date: '%m' | slice: 0,2 | plus: -1 %}
+{% assign day_date_now = 'now' | date: '%d' | slice: 0,2 | plus: 0 %}
+
+<section class="bg-gray-50 p-3 dark:bg-gray-900 sm:p-5">
+    <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
+
+        <div class="relative overflow-hidden bg-white shadow-md dark:bg-gray-800 sm:rounded-lg">
+
+            <div class="flex justify-center items-center p-4">
+                <div class="text-center">
+                    <h5 class="mr-3 font-semibold dark:text-white">
+                        {{ site.data.translations.divine_services_jesuiten[page.lang] }}
+                    </h5>
+                    <p class="text-gray-500 dark:text-gray-400">
+                        {{ site.data.[page.lang].calendar_jesuitenkirche.month[month_date_now].announcement }}
+                    </p>
+                </div>
+            </div>
+
+            <div class="overflow-x-auto">
+                <div data-testid="table-element" class="static">
+                    <div class="absolute left-0 top-0 -z-10 h-full w-full rounded-lg bg-white drop-shadow-md dark:bg-black text-left text-sm text-gray-500 dark:text-gray-400"></div>
+
+                    <table class="w-full text-left text-sm text-gray-500 dark:text-gray-400">
+                        <thead class="group/head bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th class="bg-gray-50 dark:bg-gray-700 px-4 py-3" scope="col">
+                                {{ site.data.translations.day[page.lang] }}
+                            </th>
+                            <th class="bg-gray-50 dark:bg-gray-700 px-4 py-3" scope="col">
+                                {{ site.data.translations.time[page.lang] }}
+                            </th>
+                            <th class="bg-gray-50 dark:bg-gray-700 px-4 py-3" scope="col">
+                                {{ site.data.translations.title[page.lang] }}
+                            </th>
+                            <th class="bg-gray-50 dark:bg-gray-700 px-4 py-3" scope="col">
+                                {{ site.data.translations.occasion[page.lang] }}
+                            </th>
+                        </tr>
+                        </thead>
+
+                        <tbody class="group/body">
+                        {% for month in site.data.publishedMonths.month %}
+                        {% if month.isPublished %}
+                        {% for entry in site.data.[page.lang].calendar_jesuitenkirche.month[month.number].day %}
+                        {% for event in entry.event %}
+                        <tr
+                            data-testid="table-row-element"
+                            class="group/row border-b dark:border-gray-700"
+                            data-month="{{ month.number }}"
+                            data-day="{{ entry.d }}"
+                        >
+                            <td class="whitespace-nowrap px-4 py-3 font-medium text-gray-900 dark:text-white">
+                                {{ entry.d }} {{ site.data.[page.lang].months.dictionary[month.number].genitiv }}
+                            </td>
+                            <td class="px-4 py-3">
+                                {{ event.time }}
+                            </td>
+                            <td class="px-4 py-3">
+                                {{ event.title }}
+                            </td>
+                            <td class="px-4 py-3">
+                                {{ entry.occasion }}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        {% endfor %}
+                        {% endif %}
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

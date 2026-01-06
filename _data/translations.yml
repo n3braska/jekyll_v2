@@ -1,0 +1,21 @@
+latest_news:
+  ua: "Останні новини"
+  de: "Letzte Nachrichten"
+day:
+  ua: "День"
+  de: "Tag"
+time:
+  ua: "Час"
+  de: "Zeit"
+title:
+  ua: "Назва"
+  de: "Titel"
+occasion:
+  ua: "Подія"
+  de: "Anlass"
+divine_services_jesuiten:
+  ua: "Богослужіння в церкві Єзуїтів"
+  de: "Gottesdienste in der Jesuitenkirche"
+divine_services_josaphat:
+  ua: "Богослужіння в каплиці святого Йосафата"
+  de: "Gottesdienste in der Josaphatskapelle"

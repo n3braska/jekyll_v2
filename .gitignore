@@ -1,0 +1,10 @@
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+_includes/*.key
+.idea/
+Gemfile.lock
+
+# Local Netlify folder
+.netlify

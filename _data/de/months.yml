@@ -1,0 +1,37 @@
+dictionary:
+  - number: 1
+    nominativ: Januar
+    genitiv: Januar
+  - number: 2
+    nominativ: Februar
+    genitiv: Februar
+  - number: 3
+    nominativ: März
+    genitiv: März
+  - number: 4
+    nominativ: April
+    genitiv: April
+  - number: 5
+    nominativ: Mai
+    genitiv: Mai
+  - number: 6
+    nominativ: Juni
+    genitiv: Juni
+  - number: 7
+    nominativ: Juli
+    genitiv: Juli
+  - number: 8
+    nominativ: August
+    genitiv: August
+  - number: 9
+    nominativ: September
+    genitiv: September
+  - number: 10
+    nominativ: Oktober
+    genitiv: Oktober
+  - number: 11
+    nominativ: November
+    genitiv: November
+  - number: 12
+    nominativ: Dezember
+    genitiv: Dezember

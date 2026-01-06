@@ -1,0 +1,8 @@
+ua:
+  name: ua
+  label: Українська
+  icon: /assets/images/Ukraine.jpg
+de:
+  name: de
+  label: Deutsch
+  icon: /assets/images/Austria.png

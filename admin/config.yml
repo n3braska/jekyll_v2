@@ -1,0 +1,1241 @@
+---
+local_backend: true
+
+backend:
+  branch: master
+  name: git-gateway
+
+media_folder: assets/images/uploads
+
+collections:
+  - name: "index_pages"
+    label: "Index Pages"
+    files:
+      - label: "Index Page (Ukrainian)"
+        name: "index_ua"
+        file: "index.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Language", name: "lang", widget: "hidden", default: "ua"  }
+          - { label: "Language Reference", name: "lang-ref", widget: "hidden", default: "index" }
+          - { label: "Layout", name: "layout", widget: "hidden", default: "default" }
+          - label: "Blocks"
+            name: "blocks"
+            widget: "list"
+            types:
+
+              - label: "Blog Section"
+                name: "blog_section"
+                widget: "object"
+                fields:
+                  - { label: "Headline", name: "headline", widget: "string" }
+                  - { label: "Text", name: "text", widget: "string" }
+                  - { label: "Display Limit", name: "display_limit", widget: "number", default: 3 }
+
+              - label: "Timetable Jesuiten"
+                name: "service_schedule_jesuiten"
+                widget: "object"
+                fields:
+                  - { label: "Headline", name: "headline", widget: "string", required: false }
+
+              - label: "Timetable Josaphat"
+                name: "service_schedule_josaphat"
+                widget: "object"
+                fields:
+                  - { label: "Headline", name: "headline", widget: "string", required: false }
+
+              - label: "CTA with an Image"
+                name: "cta_button_image"
+                widget: "object"
+                fields:
+                  - { label: "Headline", name: "headline", widget: "string" }
+                  - { label: "Text", name: "text", widget: "string" }
+                  - label: "CTA"
+                    name: "cta"
+                    widget: "object"
+                    fields:
+                      - { label: "Title", name: "text", widget: "string" }
+                      - { label: "URL", name: "url", widget: "string" }
+                  - label: "Image"
+                    name: "image"
+                    widget: "object"
+                    fields:
+                      - { label: "URL", name: "src", widget: "image" }
+                      - { label: "Alt Text", name: "alt", widget: "string" }
+
+              - label: "Carousel"
+                name: "carousel"
+                widget: "object"
+                fields:
+                  - label: "Images"
+                    name: "images"
+                    widget: "list"
+                    fields:
+                      - label: "Image"
+                        name: "image"
+                        widget: "object"
+                        fields:
+                          - { label: "URL", name: "src", widget: "image" }
+                          - { label: "Alt Text", name: "alt", widget: "string" }
+
+              - label: "Image Gallery"
+                name: "image_gallery"
+                widget: "object"
+                fields:
+                  - { label: "Headline", name: "headline", widget: "string" }
+                  - { label: "Text", name: "text", widget: "string" }
+                  - label: "Images"
+                    name: "images"
+                    widget: "list"
+                    fields:
+                      - label: "Image"
+                        name: "image"
+                        widget: "object"
+                        fields:
+                          - { label: "URL", name: "src", widget: "image" }
+                          - { label: "Alt Text", name: "alt", widget: "string" }
+
+              - label: "Two Column Content"
+                name: "content_heading_description_image"
+                widget: "object"
+                fields:
+                  - { label: "Headline", name: "headline", widget: "string" }
+                  - label: "Description"
+                    name: "description"
+                    widget: "list"
+                    fields:
+                      - { label: "Paragraph", name: "paragraph", widget: "string" }
+                  - label: "Image"
+                    name: "image"
+                    widget: "object"
+                    fields:
+                      - { label: "URL", name: "src", widget: "image" }
+                      - { label: "Alt Text", name: "alt", widget: "string" }
+
+              - label: "Paragraph Content"
+                name: "content_heading_description"
+                widget: "object"
+                fields:
+                  - { label: "Headline", name: "headline", widget: "string" }
+                  - label: "Description"
+                    name: "description"
+                    widget: "list"
+                    fields:
+                      - { label: "Paragraph", name: "paragraph", widget: "string" }
+                  - label: "CTA"
+                    name: "cta"
+                    widget: "object"
+                    fields:
+                      - { label: "Title", name: "text", widget: "string" }
+                      - { label: "URL", name: "url", widget: "string" }
+
+              - label: "Content Video Embed"
+                name: "content_video_embed"
+                widget: "object"
+                fields:
+                  - { label: "Headline", name: "headline", widget: "string" }
+                  - { label: "Text", name: "text", widget: "string" }
+                  - { label: "Video Title", name: "video_title", widget: "string" }
+                  - { label: "Video URL", name: "video_url", widget: "string" }
+
+              - label: "CTA Banner"
+                name: "cta_banner"
+                widget: "object"
+                fields:
+                  - { label: "Headline", name: "headline", widget: "string" }
+                  - { label: "Text", name: "text", widget: "string" }
+                  - label: "CTA"
+                    name: "cta"
+                    widget: "object"
+                    fields:
+                      - { label: "Title", name: "text", widget: "string" }
+                      - { label: "URL", name: "url", widget: "string" }
+
+              - label: "CTA Banner with Image"
+                name: "cta_banner_image"
+                widget: "object"
+                fields:
+                  - label: "Image"
+                    name: "image"
+                    widget: "object"
+                    fields:
+                      - { label: "URL", name: "src", widget: "image" }
+                      - { label: "Alt Text", name: "alt", widget: "string" }
+                  - { label: "Headline", name: "headline", widget: "string" }
+                  - { label: "Text", name: "text", widget: "string" }
+                  - label: "CTA"
+                    name: "cta"
+                    widget: "object"
+                    fields:
+                      - { label: "Title", name: "text", widget: "string" }
+                      - { label: "URL", name: "url", widget: "string" }
+
+              - label: "Hero"
+                name: "hero"
+                widget: "object"
+                fields:
+                  - label: "Image"
+                    name: "image"
+                    widget: "object"
+                    fields:
+                      - { label: "URL", name: "src", widget: "image" }
+                      - { label: "Alt Text", name: "alt", widget: "string" }
+                  - { label: "Headline", name: "headline", widget: "string" }
+                  - { label: "Text", name: "text", widget: "string" }
+                  - label: "Primary CTA"
+                    name: "primary_cta"
+                    widget: "object"
+                    fields:
+                      - { label: "CTA Title", name: "text", widget: "string" }
+                      - { label: "CTA URL", name: "url", widget: "string" }
+                  - label: "Secondary CTA"
+                    name: "secondary_cta"
+                    widget: "object"
+                    fields:
+                      - { label: "Title", name: "text", widget: "string" }
+                      - { label: "URL", name: "url", widget: "string" }
+
+              - label: "CTA Button Middle"
+                name: "cta_button_middle"
+                widget: "object"
+                fields:
+                  - label: "Image"
+                    name: "image"
+                    widget: "object"
+                    fields:
+                      - { label: "URL", name: "src", widget: "image" }
+                      - { label: "Alt Text", name: "alt", widget: "string" }
+                  - { label: "Headline", name: "headline", widget: "string" }
+                  - { label: "Text", name: "text", widget: "string" }
+                  - label: "CTA"
+                    name: "cta"
+                    widget: "object"
+                    fields:
+                      - { label: "Title", name: "text", widget: "string" }
+                      - { label: "URL", name: "url", widget: "string" }
+
+              - label: "Event Schedule with Speakers"
+                name: "event_schedule_with_speakers"
+                widget: "object"
+                fields:
+                  - { label: "Event Day", name: "date_full", widget: "date" }
+                  - label: "Column"
+                    name: "column"
+                    widget: "list"
+                    max: 3
+                    fields:
+                      - { label: "Title", name: "title", widget: "string" }
+                      - label: "Events"
+                        name: "events"
+                        widget: "list"
+                        types:
+                          - { label: "Time", name: "time", widget: "string" }
+                          - { label: "Title", name: "title", widget: "string" }
+                          - label: "Speaker"
+                            name: "speaker"
+                            widget: "list"
+                            fields:
+                              - { label: "Speaker Image URL", name: "image", widget: "string" }
+                              - { label: "Speaker Name", name: "name", widget: "string" }
+                              - { label: "Speaker Role", name: "role", widget: "string" }
+
+              - label: "Our Team Grid"
+                name: "our_team_grid_cards"
+                widget: "object"
+                fields:
+                  - { label: "Headline", name: "headline", widget: "string" }
+                  - { label: "Text", name: "text", widget: "string" }
+
+              - label: "Email Signup"
+                name: "email_signup"
+                widget: "object"
+                fields:
+                  - { label: "Headline", name: "headline", widget: "string" }
+                  - { label: "Text", name: "text", widget: "string" }
+      - label: "Index Page (German)"
+        name: "index_de"
+        file: "de/index.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Language", name: "lang", widget: "hidden", default: "de" }
+          - { label: "Language Reference", name: "lang-ref", widget: "hidden", default: "index" }
+          - { label: "Layout", name: "layout", widget: "hidden", default: "default" }
+          - label: "Blocks"
+            name: "blocks"
+            widget: "list"
+            types:
+
+              - label: "Blog Section"
+                name: "blog_section"
+                widget: "object"
+                fields:
+                  - { label: "Headline", name: "headline", widget: "string" }
+                  - { label: "Text", name: "text", widget: "string" }
+                  - { label: "Display Limit", name: "display_limit", widget: "number", default: 3 }
+
+              - label: "Timetable Jesuiten"
+                name: "service_schedule_jesuiten"
+                widget: "object"
+                fields:
+                  - { label: "Headline", name: "headline", widget: "string", required: false }
+
+              - label: "Timetable Josaphat"
+                name: "service_schedule_josaphat"
+                widget: "object"
+                fields:
+                  - { label: "Headline", name: "headline", widget: "string", required: false }
+
+              - label: "CTA with an Image"
+                name: "cta_button_image"
+                widget: "object"
+                fields:
+                  - { label: "Headline", name: "headline", widget: "string" }
+                  - { label: "Text", name: "text", widget: "string" }
+                  - label: "CTA"
+                    name: "cta"
+                    widget: "object"
+                    fields:
+                      - { label: "Title", name: "text", widget: "string" }
+                      - { label: "URL", name: "url", widget: "string" }
+                  - label: "Image"
+                    name: "image"
+                    widget: "object"
+                    fields:
+                      - { label: "URL", name: "src", widget: "image" }
+                      - { label: "Alt Text", name: "alt", widget: "string" }
+
+              - label: "Carousel"
+                name: "carousel"
+                widget: "object"
+                fields:
+                  - label: "Images"
+                    name: "images"
+                    widget: "list"
+                    fields:
+                      - label: "Image"
+                        name: "image"
+                        widget: "object"
+                        fields:
+                          - { label: "URL", name: "src", widget: "image" }
+                          - { label: "Alt Text", name: "alt", widget: "string" }
+
+              - label: "Image Gallery"
+                name: "image_gallery"
+                widget: "object"
+                fields:
+                  - { label: "Headline", name: "headline", widget: "string" }
+                  - { label: "Text", name: "text", widget: "string" }
+                  - label: "Images"
+                    name: "images"
+                    widget: "list"
+                    fields:
+                      - label: "Image"
+                        name: "image"
+                        widget: "object"
+                        fields:
+                          - { label: "URL", name: "src", widget: "image" }
+                          - { label: "Alt Text", name: "alt", widget: "string" }
+
+              - label: "Two Column Content"
+                name: "content_heading_description_image"
+                widget: "object"
+                fields:
+                  - { label: "Headline", name: "headline", widget: "string" }
+                  - label: "Description"
+                    name: "description"
+                    widget: "list"
+                    fields:
+                      - { label: "Paragraph", name: "paragraph", widget: "string" }
+                  - label: "Image"
+                    name: "image"
+                    widget: "object"
+                    fields:
+                      - { label: "URL", name: "src", widget: "image" }
+                      - { label: "Alt Text", name: "alt", widget: "string" }
+
+              - label: "Paragraph Content"
+                name: "content_heading_description"
+                widget: "object"
+                fields:
+                  - { label: "Headline", name: "headline", widget: "string" }
+                  - label: "Description"
+                    name: "description"
+                    widget: "list"
+                    fields:
+                      - { label: "Paragraph", name: "paragraph", widget: "string" }
+                  - label: "CTA"
+                    name: "cta"
+                    widget: "object"
+                    fields:
+                      - { label: "Title", name: "text", widget: "string" }
+                      - { label: "URL", name: "url", widget: "string" }
+
+              - label: "Content Video Embed"
+                name: "content_video_embed"
+                widget: "object"
+                fields:
+                  - { label: "Headline", name: "headline", widget: "string" }
+                  - { label: "Text", name: "text", widget: "string" }
+                  - { label: "Video Title", name: "video_title", widget: "string" }
+                  - { label: "Video URL", name: "video_url", widget: "string" }
+
+              - label: "CTA Banner"
+                name: "cta_banner"
+                widget: "object"
+                fields:
+                  - { label: "Headline", name: "headline", widget: "string" }
+                  - { label: "Text", name: "text", widget: "string" }
+                  - label: "CTA"
+                    name: "cta"
+                    widget: "object"
+                    fields:
+                      - { label: "Title", name: "text", widget: "string" }
+                      - { label: "URL", name: "url", widget: "string" }
+
+              - label: "CTA Banner with Image"
+                name: "cta_banner_image"
+                widget: "object"
+                fields:
+                  - label: "Image"
+                    name: "image"
+                    widget: "object"
+                    fields:
+                      - { label: "URL", name: "src", widget: "image" }
+                      - { label: "Alt Text", name: "alt", widget: "string" }
+                  - { label: "Headline", name: "headline", widget: "string" }
+                  - { label: "Text", name: "text", widget: "string" }
+                  - label: "CTA"
+                    name: "cta"
+                    widget: "object"
+                    fields:
+                      - { label: "Title", name: "text", widget: "string" }
+                      - { label: "URL", name: "url", widget: "string" }
+
+              - label: "Hero"
+                name: "hero"
+                widget: "object"
+                fields:
+                  - label: "Image"
+                    name: "image"
+                    widget: "object"
+                    fields:
+                      - { label: "URL", name: "src", widget: "image" }
+                      - { label: "Alt Text", name: "alt", widget: "string" }
+                  - { label: "Headline", name: "headline", widget: "string" }
+                  - { label: "Text", name: "text", widget: "string" }
+                  - label: "Primary CTA"
+                    name: "primary_cta"
+                    widget: "object"
+                    fields:
+                      - { label: "CTA Title", name: "text", widget: "string" }
+                      - { label: "CTA URL", name: "url", widget: "string" }
+                  - label: "Secondary CTA"
+                    name: "secondary_cta"
+                    widget: "object"
+                    fields:
+                      - { label: "Title", name: "text", widget: "string" }
+                      - { label: "URL", name: "url", widget: "string" }
+
+              - label: "CTA Button Middle"
+                name: "cta_button_middle"
+                widget: "object"
+                fields:
+                  - label: "Image"
+                    name: "image"
+                    widget: "object"
+                    fields:
+                      - { label: "URL", name: "src", widget: "image" }
+                      - { label: "Alt Text", name: "alt", widget: "string" }
+                  - { label: "Headline", name: "headline", widget: "string" }
+                  - { label: "Text", name: "text", widget: "string" }
+                  - label: "CTA"
+                    name: "cta"
+                    widget: "object"
+                    fields:
+                      - { label: "Title", name: "text", widget: "string" }
+                      - { label: "URL", name: "url", widget: "string" }
+
+              - label: "Event Schedule with Speakers"
+                name: "event_schedule_with_speakers"
+                widget: "object"
+                fields:
+                  - { label: "Event Day", name: "date_full", widget: "date" }
+                  - label: "Column"
+                    name: "column"
+                    widget: "list"
+                    max: 3
+                    fields:
+                      - { label: "Title", name: "title", widget: "string" }
+                      - label: "Events"
+                        name: "events"
+                        widget: "list"
+                        types:
+                          - { label: "Time", name: "time", widget: "string" }
+                          - { label: "Title", name: "title", widget: "string" }
+                          - label: "Speaker"
+                            name: "speaker"
+                            widget: "list"
+                            fields:
+                              - { label: "Speaker Image URL", name: "image", widget: "string" }
+                              - { label: "Speaker Name", name: "name", widget: "string" }
+                              - { label: "Speaker Role", name: "role", widget: "string" }
+
+              - label: "Our Team Grid"
+                name: "our_team_grid_cards"
+                widget: "object"
+                fields:
+                  - { label: "Headline", name: "headline", widget: "string" }
+                  - { label: "Text", name: "text", widget: "string" }
+
+              - label: "Email Signup"
+                name: "email_signup"
+                widget: "object"
+                fields:
+                  - { label: "Headline", name: "headline", widget: "string" }
+                  - { label: "Text", name: "text", widget: "string" }
+  - name: "blog_ua"
+    label: "Blog (Ukrainian)"
+    folder: "ua/blog"
+    create: true
+    output: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Teaser Description", name: "teaser", widget: "string" }
+      - { label: "Creation Date", name: "date", widget: "datetime", default: "{{now}}" }
+      - { label: "Language", name: "lang", widget: "hidden", default: "ua" }
+      - { label: "Language Reference", name: "lang-ref", widget: "string" }
+      - { label: "Layout", name: "layout", widget: "hidden", default: "default_blog_layout" }
+      - { label: "Content", name: "body", widget: "markdown" }
+      - label: "Background Image"
+        name: "image"
+        widget: "object"
+        fields:
+          - { label: "URL", name: "src", widget: "image" }
+          - { label: "Alt Text", name: "alt", widget: "string" }
+      - label: "Image Gallery"
+        name: "image_gallery"
+        widget: "object"
+        fields:
+          - { label: "Enable Gallery", name: "gallery_enabled", widget: "boolean", default: false }
+          - { label: "Gallery Title", name: "gallery_title", widget: "string", default: "Attached Gallery" }
+          - label: "Images"
+            name: "images"
+            widget: "list"
+            fields:
+              - label: "Image"
+                name: "image"
+                widget: "object"
+                fields:
+                  - { label: "URL", name: "src", widget: "image" }
+                  - { label: "Alt Text", name: "alt", widget: "string" }
+  - name: "pages_ua"
+    label: "Pages (Ukrainian)"
+    folder: "ua"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Language", name: "lang", widget: "hidden", default: "ua"  }
+      - { label: "Language Reference", name: "lang-ref", widget: "string" }
+      - { label: "Layout", name: "layout", widget: "hidden", default: "default" }
+      - label: "Blocks"
+        name: "blocks"
+        widget: "list"
+        types:
+
+           - label: "Blog Section"
+             name: "blog_section"
+             widget: "object"
+             fields:
+               - { label: "Headline", name: "headline", widget: "string" }
+               - { label: "Text", name: "text", widget: "string" }
+               - { label: "Display Limit", name: "display_limit", widget: "number", default: 3 }
+
+           - label: "Timetable Jesuiten"
+             name: "service_schedule_jesuiten"
+             widget: "object"
+             fields:
+               - { label: "Headline", name: "headline", widget: "string", required: false }
+
+           - label: "Timetable Josaphat"
+             name: "service_schedule_josaphat"
+             widget: "object"
+             fields:
+               - { label: "Headline", name: "headline", widget: "string", required: false }
+
+           - label: "CTA with an Image"
+             name: "cta_button_image"
+             widget: "object"
+             fields:
+               - { label: "Headline", name: "headline", widget: "string" }
+               - { label: "Text", name: "text", widget: "string" }
+               - label: "CTA"
+                 name: "cta"
+                 widget: "object"
+                 fields:
+                   - { label: "Title", name: "text", widget: "string" }
+                   - { label: "URL", name: "url", widget: "string" }
+               - label: "Image"
+                 name: "image"
+                 widget: "object"
+                 fields:
+                   - { label: "URL", name: "src", widget: "image" }
+                   - { label: "Alt Text", name: "alt", widget: "string" }
+
+           - label: "Carousel"
+             name: "carousel"
+             widget: "object"
+             fields:
+               - label: "Images"
+                 name: "images"
+                 widget: "list"
+                 fields:
+                   - label: "Image"
+                     name: "image"
+                     widget: "object"
+                     fields:
+                       - { label: "URL", name: "src", widget: "image" }
+                       - { label: "Alt Text", name: "alt", widget: "string" }
+
+           - label: "Image Gallery"
+             name: "image_gallery"
+             widget: "object"
+             fields:
+               - { label: "Headline", name: "headline", widget: "string" }
+               - { label: "Text", name: "text", widget: "string" }
+               - label: "Images"
+                 name: "images"
+                 widget: "list"
+                 fields:
+                   - label: "Image"
+                     name: "image"
+                     widget: "object"
+                     fields:
+                       - { label: "URL", name: "src", widget: "image" }
+                       - { label: "Alt Text", name: "alt", widget: "string" }
+
+           - label: "Two Column Content"
+             name: "content_heading_description_image"
+             widget: "object"
+             fields:
+               - { label: "Headline", name: "headline", widget: "string" }
+               - label: "Description"
+                 name: "description"
+                 widget: "list"
+                 fields:
+                   - { label: "Paragraph", name: "paragraph", widget: "string" }
+               - label: "Image"
+                 name: "image"
+                 widget: "object"
+                 fields:
+                   - { label: "URL", name: "src", widget: "image" }
+                   - { label: "Alt Text", name: "alt", widget: "string" }
+
+           - label: "Paragraph Content"
+             name: "content_heading_description"
+             widget: "object"
+             fields:
+               - { label: "Headline", name: "headline", widget: "string" }
+               - label: "Description"
+                 name: "description"
+                 widget: "list"
+                 fields:
+                   - { label: "Paragraph", name: "paragraph", widget: "string" }
+               - label: "CTA"
+                 name: "cta"
+                 widget: "object"
+                 fields:
+                   - { label: "Title", name: "text", widget: "string" }
+                   - { label: "URL", name: "url", widget: "string" }
+
+           - label: "Content Video Embed"
+             name: "content_video_embed"
+             widget: "object"
+             fields:
+               - { label: "Headline", name: "headline", widget: "string" }
+               - { label: "Text", name: "text", widget: "string" }
+               - { label: "Video Title", name: "video_title", widget: "string" }
+               - { label: "Video URL", name: "video_url", widget: "string" }
+
+           - label: "CTA Banner"
+             name: "cta_banner"
+             widget: "object"
+             fields:
+               - { label: "Headline", name: "headline", widget: "string" }
+               - { label: "Text", name: "text", widget: "string" }
+               - label: "CTA"
+                 name: "cta"
+                 widget: "object"
+                 fields:
+                   - { label: "Title", name: "text", widget: "string" }
+                   - { label: "URL", name: "url", widget: "string" }
+
+           - label: "CTA Banner with Image"
+             name: "cta_banner_image"
+             widget: "object"
+             fields:
+               - label: "Image"
+                 name: "image"
+                 widget: "object"
+                 fields:
+                   - { label: "URL", name: "src", widget: "image" }
+                   - { label: "Alt Text", name: "alt", widget: "string" }
+               - { label: "Headline", name: "headline", widget: "string" }
+               - { label: "Text", name: "text", widget: "string" }
+               - label: "CTA"
+                 name: "cta"
+                 widget: "object"
+                 fields:
+                   - { label: "Title", name: "text", widget: "string" }
+                   - { label: "URL", name: "url", widget: "string" }
+
+           - label: "Hero"
+             name: "hero"
+             widget: "object"
+             fields:
+               - label: "Image"
+                 name: "image"
+                 widget: "object"
+                 fields:
+                   - { label: "URL", name: "src", widget: "image" }
+                   - { label: "Alt Text", name: "alt", widget: "string" }
+               - { label: "Headline", name: "headline", widget: "string" }
+               - { label: "Text", name: "text", widget: "string" }
+               - label: "Primary CTA"
+                 name: "primary_cta"
+                 widget: "object"
+                 fields:
+                   - { label: "CTA Title", name: "text", widget: "string" }
+                   - { label: "CTA URL", name: "url", widget: "string" }
+               - label: "Secondary CTA"
+                 name: "secondary_cta"
+                 widget: "object"
+                 fields:
+                   - { label: "Title", name: "text", widget: "string" }
+                   - { label: "URL", name: "url", widget: "string" }
+
+           - label: "CTA Button Middle"
+             name: "cta_button_middle"
+             widget: "object"
+             fields:
+               - label: "Image"
+                 name: "image"
+                 widget: "object"
+                 fields:
+                   - { label: "URL", name: "src", widget: "image" }
+                   - { label: "Alt Text", name: "alt", widget: "string" }
+               - { label: "Headline", name: "headline", widget: "string" }
+               - { label: "Text", name: "text", widget: "string" }
+               - label: "CTA"
+                 name: "cta"
+                 widget: "object"
+                 fields:
+                   - { label: "Title", name: "text", widget: "string" }
+                   - { label: "URL", name: "url", widget: "string" }
+
+           - label: "Event Schedule with Speakers"
+             name: "event_schedule_with_speakers"
+             widget: "object"
+             fields:
+               - { label: "Event Day", name: "date_full", widget: "date" }
+               - label: "Column"
+                 name: "column"
+                 widget: "list"
+                 max: 3
+                 fields:
+                   - { label: "Title", name: "title", widget: "string" }
+                   - label: "Events"
+                     name: "events"
+                     widget: "list"
+                     types:
+                       - { label: "Time", name: "time", widget: "string" }
+                       - { label: "Title", name: "title", widget: "string" }
+                       - label: "Speaker"
+                         name: "speaker"
+                         widget: "list"
+                         fields:
+                           - { label: "Speaker Image URL", name: "image", widget: "string" }
+                           - { label: "Speaker Name", name: "name", widget: "string" }
+                           - { label: "Speaker Role", name: "role", widget: "string" }
+
+           - label: "Our Team Grid"
+             name: "our_team_grid_cards"
+             widget: "object"
+             fields:
+               - { label: "Headline", name: "headline", widget: "string" }
+               - { label: "Text", name: "text", widget: "string" }
+
+           - label: "Email Signup"
+             name: "email_signup"
+             widget: "object"
+             fields:
+               - { label: "Headline", name: "headline", widget: "string" }
+               - { label: "Text", name: "text", widget: "string" }
+  - label: (To be removed)
+    name: news_ua_de
+    files:
+      - label: Barbareum UA
+        name: barbareum_ua
+        file: _data/ua/barbareum.yml
+        fields:
+          - label: Новини
+            name: news
+            widget: list
+            fields:
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Автор, name: autor, required: false, widget: string }
+              - { label: Дата публікації, name: date, widget: date, format: 'DD.MM.YYYY' }
+              - { label: Зображення, name: picture, required: false, widget: image }
+              - { label: Перший абзац, name: excerpt, required: false, widget: markdown }
+              - { label: Текст новини, name: text, widget: markdown }
+      - label: Barbareum DE
+        name: barbareum_de
+        file: _data/de/barbareum.yml
+        fields:
+          - label: Nachricht
+            name: news
+            widget: list
+            fields:
+              - { label: Titel, name: title, widget: string }
+              - { label: Autor, name: autor, required: false, widget: string }
+              - { label: Publikationsdatum, name: date, widget: date, format: 'DD.MM.YYYY' }
+              - { label: Bild, name: picture, required: false, widget: image }
+              - { label: Erster Absatz, name: excerpt, required: false, widget: markdown }
+              - { label: Weiterer Text, name: text, widget: markdown }
+      - label: Стрічка новин Церква
+        name: news_ua
+        file: _data/ua/news.yml
+        fields:
+          - label: Новини
+            name: news
+            widget: list
+            fields:
+              - {label: Заголовок, name: title, widget: string}
+              - {label: Автор, name: autor, required: false, widget: string}
+              - {label: Дата публікації, name: date, widget: date, format: 'DD.MM.YYYY'}
+              - {label: Зображення, name: picture, required: false, widget: image}
+              - {label: Перший абзац, name: excerpt, required: false, widget: markdown}
+              - {label: Текст новини, name: text, widget: markdown}
+      - label: Nachrichten Kirche
+        name: news_de
+        file: _data/de/news.yml
+        fields:
+          - label: Nachricht
+            name: news
+            widget: list
+            fields:
+              - {label: Titel, name: title, widget: string}
+              - {label: Autor, name: autor, required: false, widget: string}
+              - {label: Publikationsdatum, name: date, widget: date, format: 'DD.MM.YYYY'}
+              - {label: Bild, name: picture, required: false, widget: image}
+              - {label: Erster Absatz, name: excerpt, required: false, widget: markdown}
+              - {label: Weiterer Text, name: text, widget: markdown}
+  - label: Schedule of Divine Services
+    name: divine_services
+    files:
+      - label: Calendar Jesuitenkirche (Ukrainian)
+        name: calendar_ua_jesuiten
+        file: _data/ua/calendar_jesuitenkirche.yml
+        fields:
+          - label: Місяць
+            name: month
+            widget: list
+            fields:
+              - label: Дата початку місяця
+                name: month_date
+                widget: date
+                format: 'MM-YYYY'
+              - label: Публікувати
+                name: is_published
+                widget: boolean
+                default: false
+              - label: Оголошення
+                name: announcement
+                widget: string
+                required: false
+              - label: День
+                name: day
+                required: false
+                widget: list
+                fields:
+                  - label: Число
+                    name: d
+                    widget: number
+                    min: 1
+                    max: 31
+                    hint: День місяця
+                  - label: Подія
+                    name: event
+                    required: false
+                    widget: list
+                    fields:
+                      - label: Час
+                        name: time
+                        widget: datetime
+                        format: 'H:mm'
+                        dateFormat: false
+                        default: ""
+                      - label: Назва
+                        name: title
+                        required: false
+                        widget: string
+                  - label: Додатковий захід
+                    name: occasion
+                    widget: string
+                    required: false
+      - label: Calendar Jesuitenkirche (German)
+        name: calendar_de_jesuiten
+        file: _data/de/calendar_jesuitenkirche.yml
+        fields:
+          - label: Місяць
+            name: month
+            widget: list
+            fields:
+              - label: Дата початку місяця
+                name: month_date
+                widget: date
+                format: 'MM-YYYY'
+              - label: Публікувати
+                name: is_published
+                widget: boolean
+                default: false
+              - label: Оголошення
+                name: announcement
+                widget: string
+                required: false
+              - label: День
+                name: day
+                required: false
+                widget: list
+                fields:
+                  - label: Число
+                    name: d
+                    widget: number
+                    min: 1
+                    max: 31
+                    hint: День місяця
+                  - label: Подія
+                    name: event
+                    required: false
+                    widget: list
+                    fields:
+                      - label: Час
+                        name: time
+                        widget: datetime
+                        format: 'H:mm'
+                        dateFormat: false
+                        default: ""
+                      - label: Назва
+                        name: title
+                        required: false
+                        widget: string
+                  - label: Додатковий захід
+                    name: occasion
+                    widget: string
+                    required: false
+      - label: Calendar Josaphat (Ukrainian)
+        name: calendar_ua_josaphat
+        file: _data/ua/calendar_josaphatskapelle.yml
+        fields:
+          - label: Місяць
+            name: month
+            widget: list
+            fields:
+              - label: Дата початку місяця
+                name: month_date
+                widget: date
+                format: 'MM-YYYY'
+              - label: Публікувати
+                name: is_published
+                widget: boolean
+                default: false
+              - label: Оголошення
+                name: announcement
+                widget: string
+                required: false
+              - label: День
+                name: day
+                required: false
+                widget: list
+                fields:
+                  - label: Число
+                    name: d
+                    widget: number
+                    min: 1
+                    max: 31
+                    hint: День місяця
+                  - label: Подія
+                    name: event
+                    required: false
+                    widget: list
+                    fields:
+                      - label: Час
+                        name: time
+                        widget: datetime
+                        format: 'H:mm'
+                        dateFormat: false
+                        default: ""
+                      - label: Назва
+                        name: title
+                        required: false
+                        widget: string
+                  - label: Додатковий захід
+                    name: occasion
+                    widget: string
+                    required: false
+      - label: Calendar Josaphat (German)
+        name: calendar_de_josaphat
+        file: _data/de/calendar_josaphatskapelle.yml
+        fields:
+          - label: Місяць
+            name: month
+            widget: list
+            fields:
+              - label: Дата початку місяця
+                name: month_date
+                widget: date
+                format: 'MM-YYYY'
+              - label: Публікувати
+                name: is_published
+                widget: boolean
+                default: false
+              - label: Оголошення
+                name: announcement
+                widget: string
+                required: false
+              - label: День
+                name: day
+                required: false
+                widget: list
+                fields:
+                  - label: Число
+                    name: d
+                    widget: number
+                    min: 1
+                    max: 31
+                    hint: День місяця
+                  - label: Подія
+                    name: event
+                    required: false
+                    widget: list
+                    fields:
+                      - label: Час
+                        name: time
+                        widget: datetime
+                        format: 'H:mm'
+                        dateFormat: false
+                        default: ""
+                      - label: Назва
+                        name: title
+                        required: false
+                        widget: string
+                  - label: Додатковий захід
+                    name: occasion
+                    widget: string
+                    required: false
+      - label: Published Months
+        name: published_months
+        file: _data/publishedMonths.yml
+        fields:
+          - label: Published Months
+            name: month
+            widget: list
+            fields:
+              - { label: "Month", name: "label", widget: "string" }
+              - { label: "Month Number", name: "number", widget: "hidden" }
+              - { label: "Should be published", name: "isPublished", widget: "boolean", default: false }
+  - label: Navigation
+    name: navigation
+    files:
+      - label: Navigation (Ukrainian)
+        name: navbar_ua
+        file: _data/ua/navigation.yml
+        fields:
+          - label: Navigation Item(s)
+            name: navbar
+            widget: list
+            fields:
+              - {label: Name, name: name, widget: string}
+              - {label: Link, name: link, widget: string}
+      - label: Navigation (German)
+        name: navbar_de
+        file: _data/de/navigation.yml
+        fields:
+          - label: Navigation Item(s)
+            name: navbar
+            widget: list
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Link, name: link, widget: string }
+  - label: Footer
+    name: footer
+    files:
+      - label: Footer (Ukrainian)
+        name: footer_ua
+        file: _data/ua/footer.yml
+        fields:
+          - label: "Columns"
+            name: "columns"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - label: "Column Items"
+                name: "column_items"
+                widget: "list"
+                fields:
+                  - { label: "Item title", name: "title", widget: "string" }
+                  - { label: "Item URL", name: "url", widget: "string", required: false }
+      - label: Footer (German)
+        name: footer_de
+        file: _data/de/footer.yml
+        fields:
+          - label: "Columns"
+            name: "columns"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - label: "Column Items"
+                name: "column_items"
+                widget: "list"
+                fields:
+                  - { label: "Item title", name: "title", widget: "string" }
+                  - { label: "Item URL", name: "url", widget: "string", required: false }
+  - label: Unused pages
+    name: pages
+    files:
+      - label: Галерея
+        name: gallerie
+        file: _data/events/gallerie.yaml
+        fields:
+          - label: Подія
+            name: event
+            widget: list
+            fields:
+              - label: Заголовок українською
+                name: ua
+                widget: string
+                required: true
+              - label: Заголовок німецькою
+                name: de
+                widget: string
+                required: true
+              - label: Титульне фото
+                name: title_pic
+                widget: image
+              - label: Колекція
+                name: collection
+                required: true
+                widget: list
+                fields:
+                  - label: Фото
+                    name: pic
+                    widget: image
+      - label: Пожертви
+        name: pozhertvy_ua
+        file: _data/ua/pozhertvy.yml
+        fields:
+          - label: Пожертва
+            name: pozhertva
+            widget: list
+            fields:
+              - label: Призначення
+                name: subject
+                widget: string
+                required: true
+              - label: Число
+                name: date
+                widget: date
+                format: 'DD-MM-YYYY'
+                required: true
+              - label: Необхідно
+                name: needed
+                widget: number
+                required: false
+              - label: Текст
+                name: text
+                widget: string
+                required: true
+              - label: Зібрано
+                name: collected
+                widget: number
+                required: false
+              - label: Картинка
+                name: image
+                widget: image
+                required: true
+              - label: Внески
+                name: donations
+                widget: list
+                fields:
+                  - label: Від кого
+                    name: from
+                    widget: string
+                    required: false
+                  - label: На кого
+                    name: for
+                    widged: string
+                    required: false
+                  - label: Сума
+                    name: amount
+                    widget: number
+                    required: true
+                  - label: Число
+                    name: date
+                    widget: date
+                    format: 'DD-MM-YYYY'
+                    required: true
+      - label: Spenden
+        name: pozhertvy_de
+        file: _data/de/pozhertvy.yml
+        fields:
+          - label: Spende
+            name: pozhertva
+            widget: list
+            fields:
+              - label: Zweck
+                name: subject
+                widget: string
+                required: true
+              - label: Datum
+                name: date
+                widget: date
+                format: 'DD-MM-YYYY'
+                required: true
+              - label: Erforderlich
+                name: needed
+                widget: number
+                required: true
+              - label: Gesammelt
+                name: collected
+                widget: number
+                required: false
+              - label: Текст
+                name: text
+                widget: string
+                required: true
+              - label: Bild
+                name: image
+                widget: image
+                required: false
+              - label: Beiträge
+                name: donations
+                widget: list
+                fields:
+                  - label: Von
+                    name: from
+                    widget: string
+                    required: false
+                  - label: Auf wen
+                    name: for
+                    widged: string
+                    required: false
+                  - label: Summe
+                    name: amount
+                    widget: number
+                    required: true
+                  - label: Datum
+                    name: date
+                    widget: date
+                    format: 'DD-MM-YYYY'
+                    required: true

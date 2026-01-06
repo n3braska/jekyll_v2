@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+    <title>Content Manager</title>
+</head>
+<body>
+<!-- Include the script that builds the page and powers Netlify CMS -->
+<script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+
+<script>
+    CMS.registerPreviewStyle('https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css');
+    // Custom preview for blog_ua collection
+    const BlogPreview = createClass({
+        render() {
+            const { entry, widgetFor } = this.props;
+            const title = entry.getIn(['data', 'title']) || 'Untitled';
+            const date = entry.getIn(['data', 'date']) ?
+                new Date(entry.getIn(['data', 'date'])).toLocaleDateString() : 'No date';
+            const langRef = entry.getIn(['data', 'lang-ref']);
+            const markdown = entry.getIn(['data', 'body'], '');
+
+            return h('div', {},
+                // Hero Header
+                h('header', { className: 'relative h-[460px] bg-cover bg-center bg-no-repeat bg-blend-darken xl:h-[537px]' },
+                    h('div', { className: 'absolute inset-0 bg-black/60' }),
+                    h('div', { className: 'absolute left-1/2 top-20 mx-auto w-full max-w-screen-xl -translate-x-1/2 px-4 xl:top-1/2 xl:-translate-y-1/2' },
+                        h('h1', { className: 'mb-4 max-w-4xl text-3xl font-extrabold leading-tight text-white sm:text-4xl lg:text-5xl' }, title),
+                        h('p', { className: 'max-w-2xl text-lg font-normal text-gray-200' }, 'Before going digital...')
+                    )
+                ),
+
+                // Content Card
+                h('div', { className: 'relative z-20 -mt-24 mx-4 flex max-w-screen-xl flex-col gap-8 rounded-xl bg-white p-6 shadow-lg dark:bg-gray-800 lg:-mt-28 lg:flex-row xl:mx-auto xl:p-9' },
+                    // Main content
+                    h('article', {
+                        className: 'format format-sm format-blue w-full max-w-none dark:format-invert xl:w-[828px]'
+                    }, widgetFor('body')),
+                    // Sidebar (static or mock data)
+                    h('aside', { className: 'hidden xl:block xl:w-[336px]' },
+                        h('div', { className: 'sticky top-6' },
+                            h('h4', { className: 'mb-4 text-sm font-bold uppercase tracking-wide text-gray-900 dark:text-white' }, 'Latest news'),
+                            // Mock latest articles
+                            h('div', { className: 'mb-6 flex items-center' },
+                                h('img', { className: 'mr-4 h-24 w-24 max-w-full rounded-lg object-cover', src: 'https://flowbite.s3.amazonaws.com/blocks/marketing-ui/articles/image-1.png' }),
+                                h('div', {},
+                                    h('h5', { className: 'mb-1 text-lg font-bold leading-tight text-gray-900 dark:text-white' }, 'Our first office'),
+                                    h('a', { className: 'inline-flex items-center text-sm font-medium text-blue-600 underline underline-offset-4 hover:no-underline dark:text-blue-400', href: '#' }, 'Read in 9 minutes')
+                                )
+                            )
+                        )
+                    )
+                )
+            );
+        }
+    });
+    CMS.registerPreviewTemplate('blog_ua', BlogPreview);
+</script>
+</body>
+</html>

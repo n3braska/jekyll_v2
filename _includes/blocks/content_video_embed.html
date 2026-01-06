@@ -1,0 +1,24 @@
+<section class="bg-white dark:bg-gray-900">
+    <div class="mx-auto max-w-screen-xl px-4 py-8 sm:text-center lg:px-12 lg:py-16">
+        <div class="mx-auto max-w-4xl">
+            <h2 class="mb-6 text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
+                {{ block.headline }}
+            </h2>
+            <p class="mb-8 text-gray-500 dark:text-gray-400 text-lg sm:text-xl md:px-8 lg:px-16 xl:px-24 leading-relaxed">
+                {{ block.text }}
+            </p>
+
+            <!-- YouTube iframe with responsive container -->
+            <div class="relative mx-auto mt-12 max-w-2xl w-full aspect-video rounded-xl shadow-2xl overflow-hidden lg:mt-16">
+                <iframe
+                    src="{{ block.video_url }}"
+                    title="{{ block.video_title }}"
+                    class="w-full h-full rounded-xl"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+</section>
