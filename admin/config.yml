@@ -2,7 +2,7 @@
 local_backend: true
 
 backend:
-  branch: master
+  branch: main
   name: git-gateway
 
 media_folder: assets/images/uploads
