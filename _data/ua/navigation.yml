@@ -13,3 +13,5 @@ navbar:
     link: /ua/organisations.html
   - name: Заходи
     link: /ua/events.html
+  - name: Про нас
+    link: /ua/aboutus.html
