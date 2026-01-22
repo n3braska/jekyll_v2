@@ -7,5 +7,9 @@ navbar:
     name: Hilfe für die Ukraine
   - link: /de/tayinstva.html
     name: Sakrament
-  - link: /de/history.html
-    name: Geschichte
+  - name: Organisationen
+    link: /de/organisations.html
+  - name: Veranstaltungen
+    link: /de/events.html
+  - name: Über uns
+    link: /de/aboutus.html
