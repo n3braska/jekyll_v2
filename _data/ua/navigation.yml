@@ -9,3 +9,7 @@ navbar:
     name: Допомога Україні
   - link: /ua/history.html
     name: Історія
+  - name: "Парафіяльні організації "
+    link: /ua/organisations.html
+  - name: Парафіяльні заходи
+    link: /ua/events.html
