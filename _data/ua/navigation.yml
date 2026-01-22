@@ -7,8 +7,6 @@ navbar:
     name: Таїнства
   - link: /ua/pozhertvy.html
     name: Допомога Україні
-  - link: /ua/history.html
-    name: Історія
   - name: "Організації "
     link: /ua/organisations.html
   - name: Заходи
